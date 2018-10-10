@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # app
 
 ## Project setup
@@ -24,3 +25,7 @@ yarn run test
 ```
 yarn run lint
 ```
+=======
+# vue-memo
+make memo via vue
+>>>>>>> origin/master
