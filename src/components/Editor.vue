@@ -8,6 +8,7 @@
 
 <script>
 import firebase from 'firebase'
+import marked from 'marked';
 
 export default {
     name:'editor',

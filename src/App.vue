@@ -15,18 +15,6 @@ export default {
   name: 'app',
   beforeCreate:function(){
     firebase.auth().onAuthStateChanged(user =>{
-      this.loading = false;
-    })
-  },
-  data(){
-    return{
-      isLogin:false,
-      userData:null,
-      loading:false,
-    }
-  },
-  created:function(){
-    firebase.auth().onAuthStateChanged(user =>{
       if(user){
         this.isLogin=true;
         this.userData=user;
@@ -36,6 +24,13 @@ export default {
       }
       this.loading=true;
     })
+  },
+  data(){
+    return{
+      isLogin:false,
+      userData:null,
+      loading:false,
+    }
   },
   components: {
     'Home':Home,
