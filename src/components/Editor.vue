@@ -1,7 +1,8 @@
 <template>
     <div class='editor'>
         <h1>エディター画面</h1>
-        <button @click='Logout'>ログアウト</button>
+        <span>{{user.displayName}}</span>
+        <button @click='logout'>ログアウト</button>
     </div>
 </template>
 
@@ -10,12 +11,13 @@ import firebase from 'firebase'
 
 export default {
     name:'editor',
+    props:['user'],
     data(){
         return{
         }
     },
     methods:{
-        Logout:function(){
+        logout:function(){
           firebase.auth().signOut().then(()=>{
               this.$router.push('/')
           })

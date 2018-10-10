@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <Home v-if='!login'></Home>
-    <Editor v-if='login'></Editor>
+    <div v-if="!loading">Loading...</div>
+    <Home v-if='!isLogin && loading'></Home>
+    <Editor v-if='isLogin && loading' :user='userData'></Editor>
   </div>
 </template>
 
@@ -12,18 +13,28 @@ import firebase from 'firebase';
 
 export default {
   name: 'app',
+  beforeCreate:function(){
+    firebase.auth().onAuthStateChanged(user =>{
+      this.loading = false;
+    })
+  },
   data(){
     return{
-      login:false
+      isLogin:false,
+      userData:null,
+      loading:false,
     }
   },
   created:function(){
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
-        this.login=true;
+        this.isLogin=true;
+        this.userData=user;
       } else {
-        this.login=false;
+        this.isLogin=false;
+        this.userData=null;
       }
+      this.loading=true;
     })
   },
   components: {

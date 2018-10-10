@@ -17,7 +17,8 @@ export default {
     },
     methods:{
         googleLogin:function(){
-            firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+            let provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider);
         }
     }
 }
