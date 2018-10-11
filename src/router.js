@@ -6,8 +6,13 @@ import Editor from './components/Editor.vue';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/editor', component: Editor },
+    {
+        path: '/',
+        component: {
+            default: Home,
+            editor: Editor
+        }
+    },
 ];
 
 const router = new VueRouter({
