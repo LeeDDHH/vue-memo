@@ -9,6 +9,8 @@
                     <p class='memotitle'>{{displayTitle(memo.markdown)}}</p>
                 </div>
                 <button class='addMemoButton' @click='addMemo'>メモの追加</button>
+                <button class='deleteMemoButton' v-if='memos.length > 1' @click='deleteMemo'>選択中のメモの削除</button>
+                <button class='saveMemosButton' @click='saveMemos'>メモを保存</button>
             </div>
         </div>
         <div class='editorWrapper'>
@@ -25,6 +27,17 @@ import marked from 'marked';
 export default {
     name:'editor',
     props:['user'],
+    created:function(){
+    firebase
+      .database()
+      .ref('/memos/'+this.user.uid)
+      .once('value')
+      .then(result => {
+        if(result.val()){
+          this.memos = result.val()
+        }
+      })
+  },
     data(){
         return{
             memos:[{
@@ -46,6 +59,18 @@ export default {
             this.memos.push({
                 markdown:'無題のメモ'
             })
+        },
+        deleteMemo:function(){
+            this.memos.splice(this.selectedIndex,1)
+            if(this.selectedIndex > 0){
+                this.selectedIndex--
+            }
+        },
+        saveMemos:function(){
+            firebase
+                .database()
+                .ref('/memos/'+this.user.uid)
+                .set(this.memos)
         },
         selectMemo:function(index){
             this.selectedIndex = index;
@@ -82,6 +107,9 @@ export default {
 }
 .addMemoButton{
     margin-top:20px;
+}
+.deleteMemoButton{
+    margin:10px;
 }
 .editorWrapper{
     display:flex;

@@ -1,8 +1,15 @@
 <template>
   <div id="app">
-    <div v-if="!loading">Loading...</div>
-    <Home v-if='!isLogin && loading'></Home>
-    <Editor v-if='isLogin && loading' :user='userData'></Editor>
+    <v-app>
+      <v-toolbar app class='yellow darken-2'>
+
+      </v-toolbar>
+      <v-content>
+        <div v-if="!loading">Loading...</div>
+        <Home v-if='!isLogin && loading'></Home>
+        <Editor v-if='isLogin && loading' :user='userData'></Editor>
+      </v-content>
+    </v-app>
   </div>
 </template>
 
