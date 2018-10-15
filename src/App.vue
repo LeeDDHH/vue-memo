@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <v-toolbar app class='yellow darken-2'>
-
+        <h1>カモメモ</h1>
       </v-toolbar>
       <v-content>
         <div v-if="!loading">Loading...</div>
@@ -20,6 +20,7 @@ import firebase from 'firebase';
 
 export default {
   name: 'app',
+  //ユーザーのログイン情報を確認
   beforeCreate:function(){
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
@@ -46,7 +47,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -54,5 +55,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+h1 {
+  font-family: "Nico Moji";
+  font-size: 31px;
+  padding-bottom: 7px;
 }
 </style>

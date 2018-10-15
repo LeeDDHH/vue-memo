@@ -16,6 +16,7 @@ export default {
         }
     },
     methods:{
+        //Googelアカウントでログイン
         googleLogin:function(){
             let provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithRedirect(provider);

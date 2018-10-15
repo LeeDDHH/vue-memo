@@ -28,11 +28,13 @@ export default {
     name:'editor',
     props:['user'],
     created:function(){
+    //DBからユーザーのメモを取得
     firebase
       .database()
       .ref('/memos/'+this.user.uid)
       .once('value')
       .then(result => {
+        //memosに代入
         if(result.val()){
           this.memos = result.val()
         }
@@ -40,6 +42,7 @@ export default {
   },
     data(){
         return{
+            //デフォルトのデータ
             memos:[{
                 markdown:''
             }],
@@ -47,34 +50,41 @@ export default {
         }
     },
     methods:{
+        //ログアウト処理 && ログインページに遷移
         logout:function(){
           firebase.auth().signOut().then(()=>{
             this.$router.push('/')
           })
         },
+        //プレビューに表示
         preview:function(){
             return marked(this.memos[this.selectedIndex].markdown);
         },
+        //新しいメモの追加
         addMemo:function(){
             this.memos.push({
                 markdown:'無題のメモ'
             })
         },
+        //メモの削除
         deleteMemo:function(){
             this.memos.splice(this.selectedIndex,1)
             if(this.selectedIndex > 0){
                 this.selectedIndex--
             }
         },
+        //メモの保存(DBに書き足し)
         saveMemos:function(){
             firebase
                 .database()
                 .ref('/memos/'+this.user.uid)
                 .set(this.memos)
         },
+        //選択したメモ
         selectMemo:function(index){
             this.selectedIndex = index;
         },
+        //メモのタイトルだけ表示
         displayTitle:function(text){
             return text.split(/\n/)[0];
         }
