@@ -1,18 +1,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from './components/Home.vue';
-import Editor from './components/Editor.vue';
+import Top from "./view/Top.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: '/',
-        component: {
-            default: Home,
-            editor: Editor
-        }
-    },
+  {
+    path: "/",
+    name: "top",
+    component: Top
+  },
 ];
 
 const router = new VueRouter({
