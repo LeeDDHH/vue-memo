@@ -4,7 +4,7 @@
       <v-toolbar app class='yellow darken-2'>
         <h1>カモメモ</h1>
       </v-toolbar>
-      <v-content>
+      <v-content class='blue-grey lighten-4'>
         <v-container fluid>
           <router-view></router-view>
         </v-container>
@@ -28,6 +28,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#app,
+#top,
+.container,
+.editor {
+  height: 100%;
 }
 h1 {
   font-family: "Nico Moji";

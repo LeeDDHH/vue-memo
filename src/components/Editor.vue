@@ -1,21 +1,20 @@
 <template>
     <div class='editor'>
-        <h1>エディター画面</h1>
-        <span>{{user.displayName}}</span>
-        <button @click='logout'>ログアウト</button>
-        <div>
-            <div class='memoListWrapper'>
-                <div class='memoList' v-for='(memo, index) in memos' :key='index' @click='selectMemo(index)' :data-selected='index == selectedIndex'>
-                    <p class='memotitle'>{{displayTitle(memo.markdown)}}</p>
-                </div>
-                <button class='addMemoButton' @click='addMemo'>メモの追加</button>
-                <button class='deleteMemoButton' v-if='memos.length > 1' @click='deleteMemo'>選択中のメモの削除</button>
-                <button class='saveMemosButton' @click='saveMemos'>メモを保存</button>
+        <div class='memoListWrapper'>
+            <span>{{user.displayName}}</span>
+            <div class='memoList' v-for='(memo, index) in memos' :key='index' @click='selectMemo(index)' :data-selected='index == selectedIndex'>
+                <p class='memotitle'>{{displayTitle(memo.markdown)}}</p>
             </div>
+            <button class='addMemoButton' @click='addMemo'>メモの追加</button>
+            <button class='deleteMemoButton' v-if='memos.length > 1' @click='deleteMemo'>選択中のメモの削除</button>
+            <button class='saveMemosButton' @click='saveMemos'>メモを保存</button>
+            <button @click='logout'>ログアウト</button>
         </div>
         <div class='editorWrapper'>
-            <textarea class='markdown' v-model='memos[selectedIndex].markdown'></textarea>
-            <div class='preview' v-html='preview()'></div>
+            <div class='adjust'>
+                <textarea class='markdown' v-model='memos[selectedIndex].markdown'></textarea>
+                <div class='preview' v-html='preview()'></div>
+            </div>
         </div>
     </div>
 </template>
@@ -92,9 +91,20 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
+html {
+    height:100%
+}
+body {
+    height: 100%;
+    margin: 0;
+}
+.editor{
+    display: flex;
+    height: 100%;
+}
 .memoListWrapper{
     width:19%;
-    float:left;
+    flex-basis: 20%;
     border-top:1px solid #000;
 }
 .memoList{
@@ -122,16 +132,22 @@ export default {
     margin:10px;
 }
 .editorWrapper{
-    display:flex;
+    flex-basis: 80%;
+}
+.adjust{
+    display: flex;
+    height: 100%;
 }
 .markdown{
-    float:left;
-    width:40%;
-    height:500px;
+    flex-basis: 50%;
+    // width:40%;
+    height:80%;
+    border:solid 1px grey;
 }
 .preview{
-    float:left;
-    width:40%;
+    flex-basis: 50%;
+    // width:40%;
+    height: 80%;
     text-align:left;
 }
 </style>
