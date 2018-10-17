@@ -2,9 +2,11 @@
     <div class='editor'>
         <div class='memoListWrapper'>
             <span>{{user.displayName}}</span>
-            <div class='memoList' v-for='(memo, index) in memos' :key='index' @click='selectMemo(index)' :data-selected='index == selectedIndex'>
-                <p class='memotitle'>{{displayTitle(memo.markdown)}}</p>
-            </div>
+            <ul class='scroll' >
+                <li class='memoList' v-for='(memo, index) in memos' :key='index' @click='selectMemo(index)' :data-selected='index == selectedIndex'>
+                    <p class='memotitle'>{{displayTitle(memo.markdown)}}</p>
+                </li>
+            </ul>
             <button class='addMemoButton' @click='addMemo'>メモの追加</button>
             <button class='deleteMemoButton' v-if='memos.length > 1' @click='deleteMemo'>選択中のメモの削除</button>
             <button class='saveMemosButton' @click='saveMemos'>メモを保存</button>
@@ -98,16 +100,28 @@ body {
     height: 100%;
     margin: 0;
 }
+ul{
+    padding-left:0px;
+}
+.scroll{
+    height: 100%;
+    overflow-y:scroll;
+}
+.scroll::-webkit-scrollbar{
+    display:none;
+}
 .editor{
     display: flex;
     height: 100%;
 }
 .memoListWrapper{
     width:19%;
+    max-height: 500px;
     flex-basis: 20%;
     border-top:1px solid #000;
 }
 .memoList{
+    list-style: none;
     padding:10px;
     box-sizing:border-box;
     text-align:left;
