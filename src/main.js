@@ -1,4 +1,3 @@
-import 'shitajicss/docs/css/shitaji.min.css';
 import Vue from 'vue'
 import App from './App.vue'
 import firebase from 'firebase';
