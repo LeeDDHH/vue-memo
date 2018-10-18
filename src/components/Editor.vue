@@ -1,21 +1,31 @@
 <template>
     <div class='editor'>
-        <div class='memoListWrapper'>
-            <span>{{user.displayName}}</span>
-            <ul class='scroll' >
-                <li class='memoList' v-for='(memo, index) in memos' :key='index' @click='selectMemo(index)' :data-selected='index == selectedIndex'>
-                    <p class='memotitle'>{{displayTitle(memo.markdown)}}</p>
+        <div class='editor__sidebar'>
+            <div>{{user.displayName}}さん、いらっしゃい</div>
+            <div class='editor__buttonList'>
+                <v-btn fab class='pink darken-1' @click='logout'>
+                    <v-icon class='fas fa-chevron-left white--text'></v-icon>
+                </v-btn>
+                <v-btn fab class='btn yellow darken-4' @click='addMemo'>
+                    <v-icon class='fas fa-plus-circle white--text'></v-icon>
+                </v-btn>
+                <v-btn fab class='btn brown darken-4' v-if='memos.length > 1' @click='deleteMemo'>
+                    <v-icon class='far fa-trash-alt white--text'></v-icon>
+                </v-btn>
+            </div>
+            <ul class='editor__scroll' >
+                <li class='editor__memoList' v-for='(memo, index) in memos' :key='index' @click='selectMemo(index)' :data-selected='index == selectedIndex'>
+                    <p class='editor__memotitle'>{{displayTitle(memo.markdown)}}</p>
                 </li>
             </ul>
-            <button class='addMemoButton' @click='addMemo'>メモの追加</button>
-            <button class='deleteMemoButton' v-if='memos.length > 1' @click='deleteMemo'>選択中のメモの削除</button>
-            <button class='saveMemosButton' @click='saveMemos'>メモを保存</button>
-            <button @click='logout'>ログアウト</button>
         </div>
-        <div class='editorWrapper'>
-            <div class='adjust'>
-                <textarea class='markdown' v-model='memos[selectedIndex].markdown'></textarea>
-                <div class='preview' v-html='preview()'></div>
+        <div class='markdown'>
+            <div class='markdown__contents'>
+                <textarea class='markdown__textarea' placeholder='最初の行がタイトルになります' v-model='memos[selectedIndex].markdown'></textarea>
+                <div class='markdown__preview' v-html='preview()'></div>
+            </div>
+            <div>
+                <v-btn fab class='btn blue lighten-1' @click='saveMemos'><v-icon class='far fa-save white--text'></v-icon></v-btn>
             </div>
         </div>
     </div>
@@ -92,6 +102,7 @@ export default {
     }
 }
 </script>
+
 <style lang='scss' scoped>
 html {
     height:100%
@@ -103,65 +114,86 @@ body {
 ul{
     padding-left:0px;
 }
-.scroll{
-    height: 100%;
-    overflow-y:scroll;
-}
-.scroll::-webkit-scrollbar{
-    display:none;
-}
 .editor{
     display: flex;
     height: 100%;
-}
-.memoListWrapper{
-    width:19%;
-    max-height: 500px;
-    flex-basis: 20%;
-    border-top:1px solid #000;
-}
-.memoList{
-    list-style: none;
-    padding:10px;
-    box-sizing:border-box;
-    text-align:left;
-    border-bottom:1px solid #000;
-    &:nth-child(even){
-        background-color:#ccc;
+    margin-top: 20px;
+    $border: #000;
+    $selected: #FBC02D;
+    $even-num: #E0E0E0;
+    $hover:#FFF176;
+
+    &__sidebar{
+        width:19%;
+        max-height: 500px;
+        flex-basis: 20%;
+        padding: 40px 0px;
     }
-    &[data-selected='true']{
-        background-color:#ccf;
+    &__buttonList{
+        display:flex;
+        padding: 20px 5px;
+    }
+    &__buttonList button:first-child{
+        margin-right: auto;
+    }
+    &__buttonList .v-icon{
+        display:block;
+    }
+    &__scroll{
+        height: 100%;
+        overflow-y:scroll;
+        // border:1px solid $border;
+    }
+    &__scroll::-webkit-scrollbar{
+        display:none;
+    }
+    &__memoList{
+        list-style: none;
+        padding:10px;
+        box-sizing:border-box;
+        text-align:left;
+        border-bottom:1px solid $border;
+        &:hover{
+            background-color: $hover;
+        }
+        // &:nth-child(even){
+        //     background-color:$even-num;
+        // }
+        &[data-selected='true']{
+            background-color:$selected;
+        }
+    }
+    &__memotitle{
+        height:15px;
+        margin:0;
+        white-space: nowrap;
+        overflow:hidden;
     }
 }
-.memotitle{
-    height:15px;
-    margin:0;
-    white-space: nowrap;
-    overflow:hidden;
-}
-.addMemoButton{
-    margin-top:20px;
-}
-.deleteMemoButton{
-    margin:10px;
-}
-.editorWrapper{
-    flex-basis: 80%;
-}
-.adjust{
-    display: flex;
-    height: 100%;
-}
+
 .markdown{
-    flex-basis: 50%;
-    // width:40%;
-    height:80%;
-    border:solid 1px grey;
+        flex-basis: 80%;
+        text-align: left;
+        background-color:#F5F5F5;
+
+    &__contents{
+        padding: 40px 20px;
+        display: flex;
+        flex-wrap: nowrap;
+        height: 90%;
+        text-align:left;
+
+         > * {
+            border: solid 1px grey;
+            height: 100%;
+            padding: 30px;
+            margin: 0 10px;
+            flex-basis: 50%;
+        }
+    }
 }
-.preview{
-    flex-basis: 50%;
-    // width:40%;
-    height: 80%;
-    text-align:left;
+
+.btn{
+    margin-right:10px;
 }
 </style>

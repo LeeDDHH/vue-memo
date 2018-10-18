@@ -4,7 +4,7 @@
       <v-toolbar app class='yellow darken-2'>
         <h1>カモメモ</h1>
       </v-toolbar>
-      <v-content class='blue-grey lighten-4'>
+      <v-content class='grey lighten-4'>
         <v-container fluid>
           <router-view></router-view>
         </v-container>
