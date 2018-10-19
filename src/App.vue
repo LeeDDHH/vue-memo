@@ -2,7 +2,7 @@
   <div id="app">
     <v-app>
       <v-toolbar app class='yellow darken-2'>
-        <h1>カモメモ</h1>
+        <v-icon v-if='isLogin' class='fas fa-chevron-left btn' @click='logout'></v-icon><h1>カモメモ</h1>
       </v-toolbar>
       <v-content class='grey lighten-4'>
         <v-container fluid>
@@ -14,9 +14,31 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 
 export default {
   name: 'app',
+  beforeCreate:function(){
+    firebase.auth().onAuthStateChanged(user => {
+      if(user){
+        this.isLogin=true;
+      } else {
+        this.isLogin=false;
+      }
+    })
+  },
+  data(){
+    return{
+      isLogin:false
+    }
+  },
+  methods:{
+    logout:function(){
+      firebase.auth().signOut().then(()=>{
+        this.$router.push('/')
+      })
+    },
+  }
 }
 </script>
 
@@ -38,5 +60,8 @@ h1 {
   font-family: "Nico Moji";
   font-size: 31px;
   padding-bottom: 7px;
+}
+.btn{
+    margin-right:10px;
 }
 </style>

@@ -1,11 +1,8 @@
 <template>
     <div class='editor'>
         <div class='editor__sidebar'>
-            <div>{{user.displayName}}さん、いらっしゃい</div>
+            <v-chip>{{user.displayName}}</v-chip>
             <div class='editor__buttonList'>
-                <v-btn fab class='pink darken-1' @click='logout'>
-                    <v-icon class='fas fa-chevron-left white--text'></v-icon>
-                </v-btn>
                 <v-btn fab class='btn yellow darken-4' @click='addMemo'>
                     <v-icon class='fas fa-plus-circle white--text'></v-icon>
                 </v-btn>
@@ -61,12 +58,6 @@ export default {
         }
     },
     methods:{
-        //ログアウト処理 && ログインページに遷移
-        logout:function(){
-          firebase.auth().signOut().then(()=>{
-            this.$router.push('/')
-          })
-        },
         //プレビューに表示
         preview:function(){
             return marked(this.memos[this.selectedIndex].markdown);
