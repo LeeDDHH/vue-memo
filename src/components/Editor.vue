@@ -31,6 +31,7 @@
 <script>
 import firebase from 'firebase'
 import marked from 'marked';
+import store from '@/store';
 
 export default {
     name:'editor',

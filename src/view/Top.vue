@@ -1,8 +1,8 @@
 <template>
     <div id ="top">
         <div v-if="!loading">Loading...</div>
-        <Home v-if='!isLogin && loading'></Home>
-        <Editor v-if='isLogin && loading' :user='userData'></Editor>
+        <Home v-if='!loginCheck && loading'></Home>
+        <Editor v-if='loginCheck && loading' :user='userData'></Editor>
     </div>
 </template>
 
@@ -10,6 +10,7 @@
 import Editor from '@/components/Editor.vue'
 import Home from '@/components/Home.vue'
 import firebase from 'firebase';
+import store from '@/store';
 
 export default {
   name: 'top',
@@ -17,10 +18,10 @@ export default {
   beforeCreate:function(){
     firebase.auth().onAuthStateChanged(user =>{
       if(user){
-        this.isLogin=true;
+        this.$store.commit('isLogin', true);
         this.userData=user;
       } else {
-        this.isLogin=false;
+        this.$store.commit('isLogin', false);
         this.userData=null;
       }
       this.loading=true;
@@ -28,7 +29,6 @@ export default {
   },
   data(){
     return{
-      isLogin:false,
       userData:null,
       loading:false,
     }
@@ -36,6 +36,12 @@ export default {
   components: {
     'Home':Home,
     'Editor':Editor,
+  },
+  computed:{
+    //storeからログイン状態を取得（boolean）
+    loginCheck(){
+        return this.$store.getters.userLogin;
+      }
   }
 }
 </script>
