@@ -20,19 +20,17 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import Firebase from '@/firebase'
 
 export default {
     name:'home',
     methods:{
         //Googelアカウントでログイン
         googleLogin:function(){
-            let provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithRedirect(provider);
+            Firebase.googleLogin();
         },
         twitterLogin:function(){
-            let provider = new firebase.auth.TwitterAuthProvider();
-            firebase.auth().signInWithRedirect(provider);
+            Firebase.twitterLogin();
         }
     }
 }

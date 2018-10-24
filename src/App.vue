@@ -14,8 +14,7 @@
 </template>
 
 <script>
-import firebase from 'firebase';
-import store from '@/store';
+import Firebase from '@/firebase';
 
 export default {
   name: 'app',
@@ -26,13 +25,9 @@ export default {
       }
   },
   methods:{
+    //ログアウト(homeへ移動)
     logout:function(){
-      //storeのログイン状態を更新
-      this.$store.commit('isLogin', false);
-      //強制的にHomeへ移動
-      firebase.auth().signOut().then(()=>{
-        this.$router.push('/')
-      })
+      Firebase.logout();
     },
   }
 }
