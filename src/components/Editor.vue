@@ -83,18 +83,19 @@ export default {
         },
         //検知して、保存
         smartSave:function(){
-            var This = this;
-            function waitThenSave(){
-                This.saveMemos();
-                clearTimeout(time);
-            }
-            var time = setTimeout(waitThenSave, 3000);
+            let This = this;
             //command + sもしくはctrl + cで保存することができるように変更
             if(event.metaKey == true && event.keyCode == 83 || event.ctrlKey == true && event.keyCode == 83){
                 event.preventDefault();
                 event.stopPropagation();
                 this.saveMemos();
             }
+
+            function waitThenSave(){
+                This.saveMemos();
+                window.clearTimeout(time);
+            }
+            let time = setTimeout(waitThenSave, 3000);
         },
     },
 }

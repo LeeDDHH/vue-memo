@@ -5,6 +5,7 @@ import Vuetify from "vuetify";
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store.js'
 import Firebase from "@/firebase";
+import 'modern-normalize';
 
 Vue.use(Vuetify);
 
