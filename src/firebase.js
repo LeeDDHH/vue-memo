@@ -60,6 +60,8 @@ export default {
             //memosに代入
             if (result.val()) {
                 store.commit(memosLoad(result.val()));
+            } else {
+                store.commit(memosLoad({markdown: '無題のメモ'}));
             }
         })
     },
