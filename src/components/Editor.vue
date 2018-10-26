@@ -2,6 +2,8 @@
     <div class='editor'>
         <div class='editor__sidebar'>
             <v-chip>{{user.displayName}}</v-chip>
+            <br>
+            <router-link to="/read">利用規約</router-link>
             <div class='editor__scroll'>
                 <div class='editor__memo' v-for='(memo, index) in memos' :key='index' @click='select(index)' :data-selected='index == selectedIndex'>
                     <div class='editor__memo_one'>
@@ -19,11 +21,11 @@
                 <div class='markdown__preview' v-html='preview()'></div>
             </div>
             <div class='markdown__buttons'>
-                <v-btn fab class='btn brown darken-4' v-if='memos.length > 1' @click='remove()'>
-                    <v-icon class='far fa-trash-alt white--text'></v-icon>
-                </v-btn>
                 <v-btn fab class='btn blue lighten-1' @click='saveMemos()'>
                     <v-icon class='far fa-save white--text'></v-icon>
+                </v-btn>
+                <v-btn fab class='btn brown darken-4' v-if='memos.length > 1' @click='remove()'>
+                    <v-icon class='far fa-trash-alt white--text'></v-icon>
                 </v-btn>
             </div>
         </div>
@@ -59,7 +61,7 @@ export default {
         },
         //新しいメモの追加
         add:function(){
-            this.$store.commit( memoAdd({markdown:'無題のメモ'}) );
+            this.$store.commit( memoAdd({markdown:'無題のカモ'}) );
         },
         //メモの削除
         remove:function(){
@@ -79,6 +81,7 @@ export default {
         },
         //メモのタイトルだけ表示
         displayTitle:function(text){
+            if(!text.split(/\n/)[0]) return "無題のカモ";
             return text.split(/\n/)[0];
         },
         //検知して、保存
@@ -106,6 +109,7 @@ export default {
     list-style: none;
     width:85%;
     padding:10px;
+    margin-left:5%;
     transition: .1s ease-in-out;
     position: relative;
     cursor: pointer;
@@ -144,7 +148,7 @@ ul{
 
     &__sidebar{
         width:19%;
-        max-height: 500px;
+        max-height: 450px;
         flex-basis: 20%;
         padding: 40px 0px;
     }

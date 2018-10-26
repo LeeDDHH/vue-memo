@@ -4,6 +4,7 @@
             <img src='../assets/kamo.png' alt='カモ'>
         </h1>
         <h1>カモをのぞくとき、<br>カモもまたあなたをのぞくカモ</h1>
+        <router-link to="/read">利用規約</router-link>
             <v-layout justify-center>
                 <div @click='googleLogin' class='card'>
                     <v-card hover>
