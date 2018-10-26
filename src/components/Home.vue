@@ -1,10 +1,10 @@
 <template>
     <div id='home'>
         <h1>
-            <img src='../assets/kamo.png' alt='カモ'>
+            <img src='../assets/kamo.png' alt='kamo'>
         </h1>
-        <h1>カモをのぞくとき、<br>カモもまたあなたをのぞくカモ</h1>
-        <router-link to="/read">利用規約</router-link>
+        <h1 v-html="$t('app.message')"></h1>
+        <router-link to="/read">{{ $t('term.title') }}</router-link>
             <v-layout justify-center>
                 <div @click='googleLogin' class='card'>
                     <v-card hover>

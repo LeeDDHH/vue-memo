@@ -1,0 +1,12 @@
+{
+    "app": {
+        "title": "KamoMemo",
+        "message": "Looking into the Kamo, <br>maybe the Kamo also looks into you"
+    },
+    "term": {
+        "title": "Term od Use",
+        "message": "<p>There is no particular restriction.<br>Please use it freely as long as the <a href='https://twitter.com/camomile_cafe' target='_blank'>creator</a>'s firebase has no limited.</p><p>Please note that this service may be terminated without prior notice.<br>We appreciate your understanding.</p>"
+    },
+    "back": "Back",
+    "placeholder": "The first line becomes the title"
+}

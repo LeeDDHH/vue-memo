@@ -3,7 +3,7 @@
         <div class='editor__sidebar'>
             <v-chip>{{user.displayName}}</v-chip>
             <br>
-            <router-link to="/read">利用規約</router-link>
+            <router-link to="/read">{{ $t('term.title') }}</router-link>
             <div class='editor__scroll'>
                 <div class='editor__memo' v-for='(memo, index) in memos' :key='index' @click='select(index)' :data-selected='index == selectedIndex'>
                     <div class='editor__memo_one'>
@@ -17,7 +17,7 @@
         </div>
         <div class='markdown'>
             <div class='markdown__contents' @keydown='smartSave()'>
-                <textarea class='markdown__textarea' placeholder='最初の行がタイトルになります' v-model='memos[selectedIndex].markdown'></textarea>
+                <textarea class='markdown__textarea' v-bind:placeholder="$t('placeholder')" v-model='memos[selectedIndex].markdown'></textarea>
                 <div class='markdown__preview' v-html='preview()'></div>
             </div>
             <div class='markdown__buttons'>

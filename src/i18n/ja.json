@@ -1,0 +1,12 @@
+{
+    "app": {
+        "title": "カモメモ",
+        "message": "カモをのぞくとき、<br>カモもまたあなたをのぞくカモ"
+    },
+    "term": {
+        "title": "利用規約",
+        "message": "<p>特に制限はありません。<br><a href='https://twitter.com/camomile_cafe' target='_blank'>製作者</a>のfirebaseに制限がかからない限り、ご自由に使用してください。</p><p>なお、本サービスは予告なしに終了する場合がございます。<br>予め、ご了承お願いいたします</p>"
+    },
+    "back": "戻る",
+    "placeholder": "最初の行がタイトルになります"
+}
