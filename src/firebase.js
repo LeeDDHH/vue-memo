@@ -61,7 +61,7 @@ export default {
             if (result.val()) {
                 store.commit(memosLoad(result.val()));
             } else {
-                store.commit(memosLoad({markdown: '無題のメモ'}));
+                store.commit(memosLoad(store.state.memos));
             }
         })
     },

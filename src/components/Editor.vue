@@ -81,7 +81,7 @@ export default {
         },
         //メモのタイトルだけ表示
         displayTitle:function(text){
-            if(!text.split(/\n/)[0]) return "無題のカモ";
+            if(!text.split(/\n/)[0] || typeof text == undefined) return '無題のカモ\n'
             return text.split(/\n/)[0];
         },
         //検知して、保存

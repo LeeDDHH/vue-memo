@@ -7,7 +7,6 @@ import store from '@/store/store.js'
 import Firebase from "@/firebase";
 import 'modern-normalize';
 import Vuei18n from 'vue-i18n';
-// import data from './multi‐lingual.json';
 
 Vue.use(Vuetify);
 Vue.use(Vuei18n);
