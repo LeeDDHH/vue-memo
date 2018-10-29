@@ -8,5 +8,21 @@
         "message": "<p>There is no particular restriction.<br>Please use it freely as long as the <a href='https://twitter.com/camomile_cafe' target='_blank'>creator</a>'s firebase has no limited.</p><p>Please note that this service may be terminated without prior notice.<br>We appreciate your understanding.</p>"
     },
     "back": "Back",
-    "placeholder": "The first line becomes the title"
+    "placeholder": "The first line becomes the title",
+    "howtouse": {
+        "title": "How to Use",
+        "message1": "<h1>How to Use</h1>",
+        "message2": "<p>You can be writing Markdown like <a href='https://en.wikipedia.org/wiki/Markdown/' target='blank' style='text-decoration:none;'><b>this site</b></a>.</p>",
+        "message3": "<p>If you write the markdown format on the left side (hereafter, <strong>input field</strong>), the result will be displayed on the right side (hereafter <strong>display field</strong>).</p>",
+        "message4": "<p>You can save by <strong>shortcut</strong> while writing in the input field.<br>Windows：<code>ctrl + s</code><br>Mac：<code>command + s</code></p>",
+        "message5": "<p>It will be <strong>automatically saved</strong> when about 3 seconds pass since writing was finished.</p>",
+        "message6": "<h2>Button</h2>",
+        "message7": "Selected Memo",
+        "message8": "Available Memo",
+        "message9": "Add new Memo",
+        "message10": "Save Memo",
+        "message11": "Delete Memo",
+        "message12": "Back to Login",
+        "message13": "If there are other unclear points, please contact the <a href='https://twitter.com/camomile_cafe' target='_blank'>creator</a>."
+    }
 }

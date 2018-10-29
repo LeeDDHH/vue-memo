@@ -8,5 +8,21 @@
         "message": "<p>特に制限はありません。<br><a href='https://twitter.com/camomile_cafe' target='_blank'>製作者</a>のfirebaseに制限がかからない限り、ご自由に使用してください。</p><p>なお、本サービスは予告なしに終了する場合がございます。<br>予め、ご了承お願いいたします</p>"
     },
     "back": "戻る",
-    "placeholder": "最初の行がタイトルになります"
+    "placeholder": "最初の行がタイトルになります",
+    "howtouse": {
+        "title": "このサービスの使い方",
+        "message1": "<h1>使用方法について</h1>",
+        "message2": "<p>マークダウンの書き方は<a href='http://www.markdown.jp/what-is-markdown/' target='blank' style='text-decoration:none;'><b>こちら</b></a>に準じたものとなります。</p>",
+        "message3": "<p>左側（以下、<strong>入力欄</strong>）でマークダウン形式の書き方をすると右側（以下、<strong>表示欄</strong>）にその結果が表示されます。</p>",
+        "message4": "<p>入力欄に記載している途中、<strong>ショートカット</strong>で保存することができます。<br>Windows：<code>ctrl + s</code><br>Mac：<code>command + s</code></p>",
+        "message5": "<p>書き終わってから約3秒がすぎると<strong>自動保存</strong>されます。</p>",
+        "message6": "<h2>ボタン</h2>",
+        "message7": "選択しているメモ",
+        "message8": "選択可能なメモ",
+        "message9": "新しいメモの追加",
+        "message10": "メモを保存",
+        "message11": "メモを削除",
+        "message12": "トップに戻る",
+        "message13": "他のご不明な点がございましたら、<a href='https://twitter.com/camomile_cafe' target='_blank'>製作者</a>までご連絡お願いいたします。"
+    }
 }

@@ -3,7 +3,8 @@
         <div class='editor__sidebar'>
             <v-chip>{{user.displayName}}</v-chip>
             <br>
-            <router-link to="/read">{{ $t('term.title') }}</router-link>
+            <p><router-link to="/read">{{ $t('term.title') }}</router-link></p>
+            <p><router-link to="/howtouse">{{ $t('howtouse.title') }}</router-link></p>
             <div class='editor__scroll'>
                 <div class='editor__memo' v-for='(memo, index) in memos' :key='index' @click='select(index)' :data-selected='index == selectedIndex'>
                     <div class='editor__memo_one'>
@@ -11,7 +12,7 @@
                     </div>
                 </div>
                 <div class='editor__memo_add' style='text-align:center;' @click='add()'>
-                    <v-icon class='fas fa-plus-circle white--text' style='width:23px;height:23px;'></v-icon>
+                    <v-icon class='fas fa-plus-circle white--text circle'></v-icon>
                 </div>
             </div>
         </div>
@@ -126,6 +127,9 @@ export default {
     transition: .1s ease-in-out;
     z-index:-1;
 }
+@mixin hoverd ($color: $selected, $darkness: 10%) {
+    background-color: darken($selected, $darkness);
+}
 html {
     height:100%
 }
@@ -136,12 +140,17 @@ body {
 ul{
     padding-left:0px;
 }
+$selected: #FBC02D;
+
+a {
+    text-decoration: none;
+}
+
 .editor{
     display: flex;
     height: 100%;
     margin-top: 20px;
     $border: #000;
-    $selected: #FBC02D;
     $even-num: #E0E0E0;
     $hover:#FFF176;
     $background: #F5F5F5;
@@ -165,7 +174,7 @@ ul{
     &__scroll{
         height: 100%;
         overflow-y:scroll;
-        margin-top: 90px;
+        margin-top: 60px;
     }
     &__scroll::-webkit-scrollbar{
         display:none;
@@ -197,10 +206,10 @@ ul{
             }
 
             &:hover{
-                background-color: darken($selected, 10%);
+                @include hoverd();
 
                 &:after{
-                    background-color: darken($selected, 10%);
+                    @include hoverd();
                 }
             }
         }
@@ -217,10 +226,10 @@ ul{
             }
 
             &:hover{
-                background-color: darken($selected, 10%);
+                @include hoverd();
 
                 &:after{
-                    background-color: darken($selected, 10%);
+                    @include hoverd();
                 }
             }
         }
@@ -262,5 +271,9 @@ ul{
 
 .btn{
     margin-right:10px;
+}
+.circle{
+    width:23px;
+    height:23px;
 }
 </style>
